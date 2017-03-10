@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="elm.js"></script>
+    <title>Elm Form demo</title>
+  </head>
+  <body>
+    <p>Whatever you type in this input will appear below in upper case.</p>
+    <input id="text-input" type="text">
+    <p id="text-output"></p>
+    <div id="elm-node"></div>
+  </body>
+  <script>
+    var app = Elm.Main.embed(document.getElementById("elm-node"));
+
+    var inputEl = document.getElementById("text-input");
+    var outputEl = document.getElementById("text-output");
+
+    inputEl.addEventListener("input", function(e) {
+      app.ports.input.send(e.target.value);
+    });
+
+    app.ports.output.subscribe(function(e) {
+      outputEl.innerHTML = e;
+    });
+  </script>
+</html>
