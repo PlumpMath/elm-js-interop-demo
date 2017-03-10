@@ -18,8 +18,8 @@ init : (Model, Cmd Msg)
 init = (initialModel, Cmd.none)
 
 -- Ports
-port input : (String -> msg) -> Sub msg
 
+port input : (String -> msg) -> Sub msg
 port output : String -> Cmd msg
 
 -- Update
